@@ -1,8 +1,10 @@
 
-function Paddle(loc, vel, col){
+function Paddle(loc, vel, width, length, col){
   // Instance variables
   this.loc = loc;
   this.vel = vel;
+  this.w = width;
+  this.l = length;
   this.col = col;
   //this function calls other functions
   this.run = function(){
@@ -10,14 +12,13 @@ function Paddle(loc, vel, col){
     this.update();
     this.render();
   }
-  //This function changes the location of the ball
-  //by adding speed to x and y
+//lerp -- paddle follows mouse
   this.update = function(){
-    var mouseLoc = createVector(mouseX, mouseY)
-    this.loc = p5.Vector.lerp(this.loc, mouseLoc, .5)
-    this.loc.add(this.vel);
+    //make paddle lerp to middle of rectangle instead of corner
+    paddleLength = width/2
+    this.loc.x = lerp(this.loc.x, mouseX-paddleLength, .15)
   }
-  //checkEdges() reverses speed when the ball touches an edge
+  //checkEdges() reverses speed when the rectangle touches an edge
   this.checkEdges = function(){
     if(this.loc.x < 0) this.vel.x = -this.vel.x;
     if(this.loc.x > width) this.vel.x = -this.vel.x;
@@ -25,9 +26,11 @@ function Paddle(loc, vel, col){
     if(this.loc.y > height) this.vel.y = -this.vel.y;
   }
 
-  //render() draws the ball at the new location
+  //render() draws the paddle at the new location
   this.render = function(){
     fill(this.col);
-    ellipse(this.loc.x, this.loc.y, rad, rad);
+    rect(this.loc.x, this.loc.y, this.w, this.l);
   }
 }
+
+
