@@ -32,5 +32,3 @@ function Paddle(loc, vel, width, length, col){
     rect(this.loc.x, this.loc.y, this.w, this.l);
   }
 }
-
-

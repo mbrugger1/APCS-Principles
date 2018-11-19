@@ -1,4 +1,5 @@
 //  Global variables
+//  Global variables
 var Balls = [];
 var paddle;
 var score = 0;
@@ -51,11 +52,7 @@ function draw(){
   fill(0, 255, random(0,255))
 
   text("Woot Woot U win", 100, 400)}
-  if(score > 200){
 
-  fill(0, 255, random(0,255))
-
-  text("sugondese idiot", 100, 400)}
   //get rid of outlines
   noStroke();
   paddle.run();
@@ -83,4 +80,4 @@ function draw(){
     }
   }
 }
-
+//draw boids + mouse controlled ball

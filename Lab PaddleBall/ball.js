@@ -1,9 +1,5 @@
-/*
-**  Ball Constructor Function
-**  markus
-**  Aug 20, 2018
-*/
-
+//properties of ball function
+//function creating balls, utilized through abstraction
 function Ball(loc, vel, rad, col, sp){
   // Instance variables
   this.loc = loc;
