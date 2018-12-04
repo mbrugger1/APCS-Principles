@@ -1,7 +1,8 @@
+var tipOfTail;
 function Snake() {
   this.x = cols()/2 * scl;
   this.y = rows()/2 * scl;
-  this.xspeed = -1;
+  this.xspeed = 1;
   this.yspeed = 0;
   this.tail = [];
   this.points = 0;
@@ -17,7 +18,7 @@ function Snake() {
   this.eat = function(food) {
     if (this.x === food.x() && this.y === food.y()) {
       food.eaten();
-      this.points++;
+      score = (score + 1)* (score+1)
       this.tail.push(createVector(this.x, this.y));
     }
   }
@@ -35,26 +36,23 @@ function Snake() {
     this.x += this.xspeed * scl;
     this.y += this.yspeed * scl;
 
-    // wrap around right and bottom edges
-    this.x %= width;
-    this.y %= height;
+this.x = constrain(this.x, 0, width-scl);
+this.y = constrain(this.y, 0, height-scl);
 
-    // wrap around left and top edges
-    if (this.x < 0) {
-      this.x = width - scl;
-    }
-    if (this.y < 0) {
-      this.y = height - scl;
-    }
-  }
+if (this.x < 0); {
+  this.x = constrain(this.x, 0, width-scl);
+}
+if(this.y < 0); {
+  this.y = constrain(this.y, 0, height-scl);
+  this.dead = true
+}
+}
 
   this.draw = function() {
     fill(255);
     rect(this.x, this.y, scl, scl);
     for(var i = 0; i < this.tail.length; i++) {
-      rect(this.tail[i].x,
-          this.tail[i].y,
-          scl, scl);
+      rect(this.tail[i].x, this.tail[i].y, scl, scl);
   }
   }
 }

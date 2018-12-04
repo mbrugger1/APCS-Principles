@@ -10,7 +10,7 @@ function Food() {
   }
 
   this.draw = function() {
-    fill(255, 255, 255);
+    fill(random(0,255), random(0,255), random(0,255));
     rect(this.x(), this.y(), scl, scl);
   }
 
